@@ -12,15 +12,21 @@ namespace TestForge.MutatorRunner.Output.DataContracts
     public class MutantResult
     {
         [DataMember(Name = "id")]
-        public int Id { get; set; }
+        public string? Id { get; set; }
 
-        [DataMember(Name = "mutationScore")]
-        public int MutationScore { get; set; }
+        [DataMember(Name = "mutatorName")]
+        public string? MutatorName { get; set; }
 
-        [DataMember(Name = "killedLines")]
-        public List<int>? ChangedLines { get; set; }
+        [DataMember(Name = "replacement")]
+        public string? Replacement { get; set; }
 
-        [DataMember(Name = "resultStatus")]
-        public string? ResultStatus { get; set; }
+        [DataMember(Name = "location")]
+        public MutationLocationInCode? LocationInCode { get; set; }
+
+        [DataMember(Name = "status")]
+        public string? Status { get; set; }
+
+        [DataMember(Name = "static")]
+        public bool Static { get; set; }
     }
 }

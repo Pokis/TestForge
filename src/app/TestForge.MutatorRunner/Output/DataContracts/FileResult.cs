@@ -11,8 +11,11 @@ namespace TestForge.MutatorRunner.Output.DataContracts
     [DataContract]
     public class FileResult
     {
-        [DataMember(Name = "fileName")]
-        public string? FileName { get; set; }
+        [DataMember(Name = "language")]
+        public string? Language { get; set; }
+
+        [DataMember(Name = "source")]
+        public string? Source { get; set; }
 
         [DataMember(Name = "mutants")]
         public List<MutantResult>? Mutants { get; set; }

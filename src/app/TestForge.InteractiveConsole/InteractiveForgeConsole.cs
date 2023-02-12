@@ -11,7 +11,7 @@ namespace TestForge.InteractiveConsole
     {
         //TODO[DJ]: Make configurable
         private string _source = "C:\\src\\";
-        private string _strykerOutput = "C:\\strykerOutput";
+        private string _strykerOutput = "C:\\Source\\reports";
 
         public InteractiveForgeConsole(string[] args)
         {
@@ -44,8 +44,7 @@ namespace TestForge.InteractiveConsole
                 try
                 {
                     var parser = new StrykerOutputParser();
-                    //TODO[DJ]: Fix parsing
-                    var result = parser.Parse(Path.Join(_strykerOutput, "reports", "mutation-report.json"));
+                    var result = parser.Parse(Path.Join(_strykerOutput, "mutation-report.json"));
                 }
                 catch (Exception e)
                 {
