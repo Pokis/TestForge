@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace TestForge.InteractiveConsole
 {
-    class StringChooser
+    class StringChooser<T> where T : notnull
     {
-        public static string PromptForChoice(string[] options)
+        public static T PromptForChoice(T[] options)
         {
             var result = AnsiConsole.Prompt(
-                    new SelectionPrompt<string>()
+                    new SelectionPrompt<T>()
                         .Title("Which to work with?")
                         .PageSize(10)
                         .MoreChoicesText("[grey](Move up and down to reveal more)[/]")

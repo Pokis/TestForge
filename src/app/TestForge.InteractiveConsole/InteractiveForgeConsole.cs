@@ -1,6 +1,7 @@
 ﻿using TestForge.Core;
 using TestForge.MutatorRunner.Config;
 using TestForge.MutatorRunner.Config.Flags;
+using TestForge.MutatorRunner.Output;
 using TestForge.MutatorRunner.Runner;
 using TestForge.ProjectFinder;
 
@@ -8,6 +9,10 @@ namespace TestForge.InteractiveConsole
 {
     public class InteractiveForgeConsole : IForgeConsole
     {
+        //TODO[DJ]: Make configurable
+        private string _source = "C:\\src\\";
+        private string _strykerOutput = "C:\\strykerOutput";
+
         public InteractiveForgeConsole(string[] args)
         {
 
@@ -15,21 +20,38 @@ namespace TestForge.InteractiveConsole
 
         public void Start()
         {
-            //TODO[DJ]: Make configurable
-            var source = "C:\\src\\";
-            System.IO.Directory.SetCurrentDirectory(source);
-            var fileFinder = new FileFinder(source);
-            var projects = fileFinder.GetAllProjectsFullPaths();
+            var userSelectionResult = StringChooser<ConsoleOptions>.PromptForChoice(Enum.GetValues<ConsoleOptions>());
 
-            var projectNames = projects.Select(Path.GetFileName).ToArray();
-            var project = StringChooser.PromptForChoice(projectNames!);
-            var solutions = fileFinder.GetAllSolutions();
+            if (userSelectionResult == ConsoleOptions.GenerateStrykerOutput)
+            {
+                System.IO.Directory.SetCurrentDirectory(_source);
+                var fileFinder = new FileFinder(_source);
+                var projects = fileFinder.GetAllProjectsFullPaths();
 
-            var testProjects = fileFinder.GetAllTestProjects();
+                var projectNames = projects.Select(Path.GetFileName).ToArray();
+                var project = StringChooser<string>.PromptForChoice(projectNames!);
+                var solutions = fileFinder.GetAllSolutions();
 
-            var config = CreateStrykerConfig(project, testProjects, solutions);
-            var runner = new StrykerRunner();
-            runner.RunMutator(config);
+                var testProjects = fileFinder.GetAllTestProjects();
+
+                var config = CreateStrykerConfig(project, testProjects, solutions);
+                var runner = new StrykerRunner();
+                runner.RunMutator(config);
+            }
+
+            if (userSelectionResult == ConsoleOptions.ReadStrykerOutput)
+            {
+                try
+                {
+                    var parser = new StrykerOutputParser();
+                    //TODO[DJ]: Fix parsing
+                    var result = parser.Parse(Path.Join(_strykerOutput, "reports", "mutation-report.json"));
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Failed to parse mutator result {0}", e.Message);
+                }
+            }
         }
 
         private IMutatorConfig CreateStrykerConfig(string projectName, string[] testProjects, string[] solutions)
@@ -41,8 +63,7 @@ namespace TestForge.InteractiveConsole
                     new ReporterFlag(new[] { ReporterType.Json, ReporterType.Html }),
                 TestProjects = new TestProjectsFlag(testProjects),
                 Solution = new SolutionLocationFlag(solutions.First()),
-                //TODO[DJ]: Make configurable
-                OutputDirectory = new OutputDirectoryFlag("C:\\strykerOutput")
+                OutputDirectory = new OutputDirectoryFlag(_strykerOutput)
             };
 
             return config;
