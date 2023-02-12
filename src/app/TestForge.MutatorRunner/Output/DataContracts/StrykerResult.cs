@@ -17,6 +17,12 @@ namespace TestForge.MutatorRunner.Output.DataContracts
         [DataMember(Name = "timestampUtc")]
         public DateTime TimestampUtc { get; set; }
 
+        [DataMember(Name = "projectRoot")]
+        public string? ProjectRoot { get; set; }
+
+        [DataMember(Name = "thresholds")]
+        public Threshold[]? Thresholds { get; set; }
+
         [DataMember(Name = "files")]
         public List<FileResult>? Files { get; set; }
     }
