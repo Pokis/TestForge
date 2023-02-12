@@ -4,6 +4,7 @@ using TestForge.MutatorRunner.Config;
 using TestForge.MutatorRunner.Config.Flags;
 using TestForge.MutatorRunner.Output;
 using TestForge.MutatorRunner.Runner;
+using TestForge.OpenAI;
 using TestForge.ProjectFinder;
 
 namespace TestForge.InteractiveConsole
@@ -43,6 +44,12 @@ namespace TestForge.InteractiveConsole
                 {
                     PrintStrykerOutput();
                 }
+
+                if (userSelectionResult == ConsoleOptions.CreateOpenAiClient)
+                {
+                    var openAiClient = new OpenAiClientFactory().Create();
+                }
+
             }
         }
 

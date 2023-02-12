@@ -11,6 +11,7 @@ namespace TestForge.InteractiveConsole
         GenerateStrykerOutput,
         ReadStrykerOutput,
         PrintStrykerOutput,
+        CreateOpenAiClient,
         Exit
     }
 }

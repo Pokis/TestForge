@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\TestForge.Core\TestForge.Core.csproj" />
     <ProjectReference Include="..\TestForge.MutatorRunner\TestForge.MutatorRunner.csproj" />
+    <ProjectReference Include="..\TestForge.OpenAI\TestForge.OpenAI.csproj" />
     <ProjectReference Include="..\TestForge.ProjectFinder\TestForge.ProjectFinder.csproj" />
   </ItemGroup>
 
