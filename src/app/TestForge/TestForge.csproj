@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyName>TestForge</AssemblyName>
+    <RootNamespace>TestForge</RootNamespace>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>botsay</ToolCommandName>
+    <PackageOutputPath>./nupkg</PackageOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TestForge.Console\TestForge.Console.csproj" />
+    <ProjectReference Include="..\TestForge.Core\TestForge.Core.csproj" />
+    <ProjectReference Include="..\TestForge.InteractiveConsole\TestForge.InteractiveConsole.csproj" />
+  </ItemGroup>
+
+</Project>
