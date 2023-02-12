@@ -10,7 +10,6 @@ namespace TestForge.InteractiveConsole
     public class InteractiveForgeConsole : IForgeConsole
     {
         //TODO[DJ]: Make configurable
-        private string _source = "C:\\src\\";
         private string _strykerOutput = "C:\\Source\\reports";
 
         public InteractiveForgeConsole(string[] args)
@@ -24,8 +23,12 @@ namespace TestForge.InteractiveConsole
 
             if (userSelectionResult == ConsoleOptions.GenerateStrykerOutput)
             {
-                System.IO.Directory.SetCurrentDirectory(_source);
-                var fileFinder = new FileFinder(_source);
+                //TODO[DJ]: Take source under question from args
+                var currentDir = DirectoryNavigator.GoUpDirectory(6);
+
+                Console.WriteLine($"current dir: {currentDir}");
+
+                var fileFinder = new FileFinder(currentDir);
                 var projects = fileFinder.GetAllProjectsFullPaths();
 
                 var projectNames = projects.Select(Path.GetFileName).ToArray();
