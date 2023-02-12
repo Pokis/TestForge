@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestForge.ProjectFinder", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestForge.OpenAI", "src\app\TestForge.OpenAI\TestForge.OpenAI.csproj", "{3B541BA9-D1EA-4500-81F7-E761442EC64D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestForge.ServiceCollection", "src\app\TestForge.ServiceCollection\TestForge.ServiceCollection.csproj", "{00D480D6-D126-43FE-B6D9-0AB905E904A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{3B541BA9-D1EA-4500-81F7-E761442EC64D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B541BA9-D1EA-4500-81F7-E761442EC64D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B541BA9-D1EA-4500-81F7-E761442EC64D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00D480D6-D126-43FE-B6D9-0AB905E904A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00D480D6-D126-43FE-B6D9-0AB905E904A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00D480D6-D126-43FE-B6D9-0AB905E904A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00D480D6-D126-43FE-B6D9-0AB905E904A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
