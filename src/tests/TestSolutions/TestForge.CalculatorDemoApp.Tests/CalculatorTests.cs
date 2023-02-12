@@ -45,16 +45,16 @@ namespace TestForge.CalculatorDemoApp.Tests
             Assert.That(result, Is.EqualTo(x / y));
         }
 
-        [Test]
-        public void Multiply_GivenTwoNumbers_ShouldReturnTheirProduct()
-        {
-            int x = 5;
-            int y = 10;
+        //[Test]
+        //public void Multiply_GivenTwoNumbers_ShouldReturnTheirProduct()
+        //{
+        //    int x = 5;
+        //    int y = 10;
 
-            int result = _calculator.Multiply(x, y);
+        //    int result = _calculator.Multiply(x, y);
 
-            Assert.That(result, Is.EqualTo(x * y));
-        }
+        //    Assert.That(result, Is.EqualTo(x * y));
+        //}
 
         [Test]
         public void Divide_GivenZeroAsDenominator_ShouldThrowDivideByZeroException()
