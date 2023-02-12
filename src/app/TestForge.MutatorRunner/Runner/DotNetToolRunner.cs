@@ -37,10 +37,15 @@ namespace TestForge.MutatorRunner.Runner
                 StartInfo = processInfo
             };
 
+            process.OutputDataReceived += (sender, args) => Console.WriteLine(args.Data);
+
             process.Start();
-            string output = process.StandardOutput.ReadToEnd();
+            process.BeginOutputReadLine();
+            //string output = process.StandardOutput.ReadToEnd();
             process.WaitForExit();
-            return output;
+            //return output;
+
+            return string.Empty;
         }
     }
 }

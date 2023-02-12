@@ -9,6 +9,8 @@ namespace TestForge.InteractiveConsole
     internal enum ConsoleOptions
     {
         GenerateStrykerOutput,
-        ReadStrykerOutput
+        ReadStrykerOutput,
+        PrintStrykerOutput,
+        Exit
     }
 }

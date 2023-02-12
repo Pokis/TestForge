@@ -9,8 +9,8 @@ namespace TestForge.MutatorRunner.Runner
             var mutatorParams = config.GetCommand();
             Console.WriteLine($"Running mutator with params: {mutatorParams}");
             var output = DotNetToolRunner.RunTool(
-                "dotnet-stryker",
-                mutatorParams,
+                "dotnet",
+                $"stryker {mutatorParams}",
                 config.GetWorkingDir());
             Console.WriteLine("Mutator tool output:");
             Console.WriteLine(output);
